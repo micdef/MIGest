@@ -1,0 +1,23 @@
+﻿body {
+    height: 100%;
+    width: 100%;
+}
+
+.content-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.logo-lg > img, .logo-mini > img {
+    width: auto;
+    height: 100%;
+    max-height: 50px;
+}
+
+.form-group > div {
+    margin-bottom: 5px;
+}
+
+.form-button {
+    width: 100%;
+}

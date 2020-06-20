@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>MIGest.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{16325ce0-fb36-457f-8ef7-500d4418fe9d}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>MIGest.Database</RootNamespace>
+    <AssemblyName>MIGest.Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Functions" />
+    <Folder Include="Functions\User" />
+    <Folder Include="Schemas" />
+    <Folder Include="Stored Procedures" />
+    <Folder Include="Stored Procedures\User" />
+    <Folder Include="Tables" />
+    <Folder Include="Tables\User" />
+    <Folder Include="Tables\Business" />
+    <Folder Include="Tables\Ownership" />
+    <Folder Include="Tables\Entity" />
+    <Folder Include="Tables\Metadata" />
+    <Folder Include="Views" />
+    <Folder Include="Views\User" />
+    <Folder Include="Scripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Functions\User\F_CheckRightExists.sql" />
+    <Build Include="Functions\User\F_CheckUserExists.sql" />
+    <Build Include="Functions\User\F_CheckUserRightExists.sql" />
+    <Build Include="Functions\User\F_GetHash.sql" />
+    <Build Include="Functions\User\F_GetPostsalt.sql" />
+    <Build Include="Functions\User\F_GetPresalt.sql" />
+    <Build Include="Functions\User\F_UncryptPassword.sql" />
+    <Build Include="Schemas\Business.sql" />
+    <Build Include="Schemas\Entity.sql" />
+    <Build Include="Schemas\Metadata.sql" />
+    <Build Include="Schemas\Ownership.sql" />
+    <Build Include="Schemas\User.sql" />
+    <Build Include="Tables\Business\Bail.sql" />
+    <Build Include="Tables\Business\Bail_History.sql" />
+    <Build Include="Tables\Business\BailRent.sql" />
+    <Build Include="Tables\Business\BailRent_History.sql" />
+    <Build Include="Tables\Business\BailType.sql" />
+    <Build Include="Tables\Business\BuyTransaction.sql" />
+    <Build Include="Tables\Business\Manage.sql" />
+    <Build Include="Tables\Business\Manage_History.sql" />
+    <Build Include="Tables\Business\SellTransaction.sql" />
+    <Build Include="Tables\Entity\Address.sql" />
+    <Build Include="Tables\Entity\AddressType.sql" />
+    <Build Include="Tables\Entity\Contact.sql" />
+    <Build Include="Tables\Entity\Entity.sql" />
+    <Build Include="Tables\Entity\EntityAddress.sql" />
+    <Build Include="Tables\Entity\EntityAddress_History.sql" />
+    <Build Include="Tables\Entity\EntityContact.sql" />
+    <Build Include="Tables\Entity\EntityContact_History.sql" />
+    <Build Include="Tables\Entity\EntityProperty.sql" />
+    <Build Include="Tables\Entity\EntityProperty_History.sql" />
+    <Build Include="Tables\Entity\LegalForm.sql" />
+    <Build Include="Tables\Metadata\Country.sql" />
+    <Build Include="Tables\Metadata\InformationType.sql" />
+    <Build Include="Tables\Metadata\ObjectType.sql" />
+    <Build Include="Tables\Metadata\Zipcode.sql" />
+    <Build Include="Tables\Ownership\Lot.sql" />
+    <Build Include="Tables\Ownership\LotProperty.sql" />
+    <Build Include="Tables\Ownership\LotProperty_History.sql" />
+    <Build Include="Tables\Ownership\Ownership.sql" />
+    <Build Include="Tables\Ownership\OwnershipProperty.sql" />
+    <Build Include="Tables\Ownership\OwnershipProperty_History.sql" />
+    <Build Include="Tables\User\Right.sql" />
+    <Build Include="Tables\User\User.sql" />
+    <Build Include="Tables\User\UserRight.sql" />
+    <Build Include="Tables\User\UserRight_History.sql" />
+    <Build Include="Views\User\V_Users.sql" />
+    <Build Include="Stored Procedures\User\SP_User_Insert.sql" />
+    <Build Include="Stored Procedures\User\SP_User_Delete.sql" />
+    <Build Include="Stored Procedures\User\SP_User_Update.sql" />
+    <Build Include="Stored Procedures\User\SP_User_Check.sql" />
+    <Build Include="Stored Procedures\User\SP_User_ChangePassword.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MIGest.Database-LocalNetwork.publish.xml" />
+    <None Include="MIGest.Database-LocalDB.publish.xml" />
+  </ItemGroup>
+</Project>

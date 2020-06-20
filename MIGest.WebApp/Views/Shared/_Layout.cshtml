@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>MIGest V:1.0</title>
+            @Styles.Render("~/Content/css")
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @Scripts.Render("~/bundles/adminlte")
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+        <div class="wrapper">
+            @{ Html.RenderPartial("_HeaderNavBar"); }
+            <aside class="main-sidebar">
+                <section class="sidebar">
+                    <ul class="sidebar-menu tree" data-widget="tree" id="home-sidebar">
+                    </ul>
+                </section>
+            </aside>
+            <div class="content-wrapper" id="home-content">
+                @RenderBody()
+            </div>
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 1.0
+                </div>
+                <strong>Copyright &copy; 2019 @Html.ActionLink("Mondial Immo", "Index", "Home").</strong> All rights reserved.
+            </footer>
+        </div>
+        <script>
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+    </body>
+</html>

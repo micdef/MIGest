@@ -1,0 +1,38 @@
+﻿@using MIGest.WebApp.Infrastructure
+<header class="main-header">
+    <a href="index.html" class="logo">
+        <span class="logo-mini"><img src="~/images/logo/logo.jpg"></span>
+        <span class="logo-lg"><img src="~/images/logo/logo.jpg"> Mondial Immo</span>
+    </a>
+    <nav class="navbar navbar-static-top">
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav" id="home-navbar">
+                <li class="dropdown user user-menu">
+                    @if (SessionManager.User == null)
+                    {
+                        @Html.ActionLink("Se Connecter", "Login", "Authenticate")
+                    }
+                    else
+                    {
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="hidden-xs">@SessionManager.User.Firstname @SessionManager.User.Lastname</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    @Html.ActionLink("Profil", "Index", "Home", new { @Class = "btn btn-default btn-flat" })
+                                </div>
+                                <div class="pull-right">
+                                    @Html.ActionLink("Se déconnecter", "LogOut", "Home", new { @Class = "btn btn-default btn-flat" })
+                                </div>
+                            </li>
+                        </ul>
+                    }
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
