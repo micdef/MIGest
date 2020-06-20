@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ToolBox
 {
-    public class Command
+    public class Command : ICommand
     {
         private IDictionary<string, object> _parameters;
         private bool _isStoredProcedure;

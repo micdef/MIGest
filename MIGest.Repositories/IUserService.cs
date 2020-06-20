@@ -8,8 +8,6 @@ namespace MIGest.Repositories
 {
     public interface IUserService<TUser>
     {
-        bool Insert(TUser user);
-        bool Update(TUser user);
-        bool Delete(TUser user);
+        TUser Get(int id);
     }
 }

@@ -1,18 +1,19 @@
-﻿using System;
+﻿using MIGest.ToolBox.ADO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 
 namespace ToolBox
 {
-    public class Connection
+    public class Connection : IConnection
     {
         private string _connectionString;
         private DbProviderFactory _factory;
 
-        public Connection(string connectionString, DbProviderFactory factory)
+        public Connection(IConnectionInfo connectionInfo, DbProviderFactory factory)
         {
-            _connectionString = connectionString;
+            _connectionString = connectionInfo.ConnectionString;
             _factory = factory;
             using (DbConnection conn = CreateConnection())
             {
@@ -25,59 +26,59 @@ namespace ToolBox
         {
             if (command is null)
                 throw new NullReferenceException("Command object is not a valid object");
-            
+
             using (DbConnection cnx = CreateConnection())
-                using (DbCommand cmd = CreateCommand(command, cnx))
-                    using (DbDataAdapter da = _factory.CreateDataAdapter())
-                    {
-                        da.SelectCommand = cmd;
-                        DataTable dt = new DataTable();
-                        cnx.Open();
-                        da.Fill(dt);
-                        return dt;
-                    }
+            using (DbCommand cmd = CreateCommand(command, cnx))
+            using (DbDataAdapter da = _factory.CreateDataAdapter())
+            {
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+                cnx.Open();
+                da.Fill(dt);
+                return dt;
+            }
         }
 
         public int ExecuteNonQuery(Command command)
         {
             if (command == null)
                 throw new NullReferenceException("Command object is not a valid object");
-           
+
             using (DbConnection cnx = CreateConnection())
-                using (DbCommand cmd = CreateCommand(command, cnx))
-                {
-                    cnx.Open();
-                    return cmd.ExecuteNonQuery();
-                }
+            using (DbCommand cmd = CreateCommand(command, cnx))
+            {
+                cnx.Open();
+                return cmd.ExecuteNonQuery();
+            }
         }
 
         public object ExecuteScalar(Command command)
         {
             if (command == null)
                 throw new NullReferenceException("Command object is not a valid object");
-            
+
             using (DbConnection cnx = CreateConnection())
-                using (DbCommand cmd = CreateCommand(command, cnx))
-                {
-                    cnx.Open();
-                    object o = cmd.ExecuteScalar();
-                    return (o is DBNull) ? null : o;
-                }
+            using (DbCommand cmd = CreateCommand(command, cnx))
+            {
+                cnx.Open();
+                object o = cmd.ExecuteScalar();
+                return (o is DBNull) ? null : o;
+            }
         }
 
         public IEnumerable<TResult> ExecuteReader<TResult>(Command command, Func<IDataRecord, TResult> selector)
         {
             if (command == null)
                 throw new NullReferenceException("TCommand object is not a valid object");
-            
+
             using (DbConnection cnx = CreateConnection())
-                using (DbCommand cmd = CreateCommand(command, cnx))
-                {
-                    cnx.Open();
-                    DbDataReader dreader = cmd.ExecuteReader();
-                    while (dreader.Read())
-                        yield return selector(dreader);
-                }
+            using (DbCommand cmd = CreateCommand(command, cnx))
+            {
+                cnx.Open();
+                DbDataReader dreader = cmd.ExecuteReader();
+                while (dreader.Read())
+                    yield return selector(dreader);
+            }
         }
 
         private DbConnection CreateConnection()

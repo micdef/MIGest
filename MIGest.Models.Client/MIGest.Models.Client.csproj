@@ -46,7 +46,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthenticateService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MIGest.Models.Global\MIGest.Models.Global.csproj">
       <Project>{04b9291e-b661-4b33-8b7f-5862c8d4bddc}</Project>
