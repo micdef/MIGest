@@ -1,4 +1,5 @@
 ﻿using MIGest.Models.Global.Data.User;
+using MIGest.Models.Global.Mappers;
 using MIGest.Repositories;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,9 @@ namespace MIGest.Models.Global.Services
     {
         public User Get(int id)
         {
-            throw new NotImplementedException();
+            Command cmd = new Command("SELECT * FROM V_Users WHERE DatabaseId = @id");
+            cmd.AddParameter("@id", id);
+            return ServiceLocator.Instance.Connection.ExecuteReader(cmd, u => u.ToUser()).SingleOrDefault();
         }
     }
 }

@@ -14,13 +14,6 @@ namespace MIGest.WebApp.Controllers
 {
     public class AuthenticateController : Controller
     {
-        private IAuthenticateService<User> _service;
-
-        public AuthenticateController()
-        {
-            _service = new AuthenticateService();
-        }
-
         [AnonymousRequired]
         public ActionResult Index()
         {
@@ -41,7 +34,7 @@ namespace MIGest.WebApp.Controllers
             if (ModelState.IsValid)
                 try
                 {
-                    User u = _service.Login(loginForm.Username, loginForm.Password);
+                    User u = ServiceLocator.Instance.AuthenticateService.Login(loginForm.Username, loginForm.Password);
                     if (!(u is null))
                     {
                         SessionManager.User = u;
@@ -79,7 +72,7 @@ namespace MIGest.WebApp.Controllers
             if (ModelState.IsValid)
                 try
                 {
-                    _service.ChangePassword(SessionManager.User.Id, changePwdForm.OldPassword, changePwdForm.NewPassword1);
+                    ServiceLocator.Instance.AuthenticateService.ChangePassword(SessionManager.User.Id, changePwdForm.OldPassword, changePwdForm.NewPassword1);
                     return RedirectToAction("LogOut");
                 }
                 catch (Exception e)

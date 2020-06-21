@@ -15,16 +15,16 @@ using MIGest.Models.Global.Data.User;
 
 namespace MIGest.Models.Global.Services
 {
-    public class ServiceLocatorG : ServiceLocator
+    public class ServiceLocator : ToolBox.Patterns.ServiceLocator
     {
-        private static ServiceLocatorG _instance;
+        private static ServiceLocator _instance;
 
-        public static ServiceLocatorG Instance
+        public static ServiceLocator Instance
         {
-            get { return _instance ?? new ServiceLocatorG(); }
+            get { return _instance ?? new ServiceLocator(); }
         }
 
-        private ServiceLocatorG() {}
+        private ServiceLocator() {}
 
         public override void ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection)
         {
