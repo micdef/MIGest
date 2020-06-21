@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [User].[SP_User_Insert]
+﻿CREATE PROCEDURE [User].[SP_User_User_Insert]
 	@Username NVARCHAR(50),
 	@Password NVARCHAR(50),
 	@Firstname NVARCHAR(50),
@@ -16,4 +16,4 @@ AS
 			[flag_active] = 1, 
 			[flag_mustchangepwd] = 1,
 			[password] = [User].[F_GetHash](@Password)
-		WHERE [username] = @Username
+		WHERE [username] = @Username;

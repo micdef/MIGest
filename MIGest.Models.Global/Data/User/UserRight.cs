@@ -11,9 +11,9 @@ namespace MIGest.Models.Global.Data.User
     {
         public int IdUserRight { get; set; }
         public int IdUser { get; set; }
-        public int IdRight { get; set; }
+        public Right Right { get; set; }
         public bool IsReadable { get; set; }
         public bool IsWriteable { get; set; }
-        public string comm { get; set; }
+        public string Comm { get; set; }
     }
 }

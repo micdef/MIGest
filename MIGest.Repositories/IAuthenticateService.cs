@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace MIGest.Repositories
 {
-    public interface IAuthenticateService<TUser>
+    public interface IAuthenticateService<TUser, TUserRight>
     {
         TUser Login(string username, string pwd);
-        void ChangePassword(int iduser, string oldPassword, string newPassword);
+        void ChangePassword(int idUser, string oldPassword, string newPassword);
+        IEnumerable<TUserRight> GetRights(int idUser);
     }
 }

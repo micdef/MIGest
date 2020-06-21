@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [User].[SP_User_Update]
+﻿CREATE PROCEDURE [User].[SP_User_User_Update]
 	@IdUser INT,
 	@Firstname NVARCHAR(50),
 	@Lastname NVARCHAR(50),

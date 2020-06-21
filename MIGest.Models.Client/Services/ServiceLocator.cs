@@ -22,13 +22,13 @@ namespace MIGest.Models.Client.Services
 
         public override void ConfigureServices(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<IAuthenticateService<User>, AuthenticateService>();
+            serviceCollection.AddScoped<IAuthenticateService<User, UserRight>, AuthenticateService>();
             serviceCollection.AddScoped<IUserService<User>, UserService>();
         }
 
-        public IAuthenticateService<User> AuthenticateService
+        public IAuthenticateService<User, UserRight> AuthenticateService
         {
-            get { return Container.GetService<IAuthenticateService<User>>(); }
+            get { return Container.GetService<IAuthenticateService<User, UserRight>>(); }
         }
 
         public IUserService<User> UserService

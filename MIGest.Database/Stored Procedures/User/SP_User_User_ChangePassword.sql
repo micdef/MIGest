@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [User].[SP_User_ChangePassword]
+﻿CREATE PROCEDURE [User].[SP_User_User_ChangePassword]
 	@IdUser INT,
 	@Password NVARCHAR(50)
 AS

@@ -119,11 +119,15 @@
     <Build Include="Tables\User\UserRight.sql" />
     <Build Include="Tables\User\UserRight_History.sql" />
     <Build Include="Views\User\V_Users.sql" />
-    <Build Include="Stored Procedures\User\SP_User_Insert.sql" />
-    <Build Include="Stored Procedures\User\SP_User_Delete.sql" />
-    <Build Include="Stored Procedures\User\SP_User_Update.sql" />
-    <Build Include="Stored Procedures\User\SP_User_Check.sql" />
-    <Build Include="Stored Procedures\User\SP_User_ChangePassword.sql" />
+    <Build Include="Stored Procedures\User\SP_User_User_Insert.sql" />
+    <Build Include="Stored Procedures\User\SP_User_User_Delete.sql" />
+    <Build Include="Stored Procedures\User\SP_User_User_Update.sql" />
+    <Build Include="Stored Procedures\User\SP_User_User_Check.sql" />
+    <Build Include="Stored Procedures\User\SP_User_User_ChangePassword.sql" />
+    <Build Include="Views\User\V_Rights.sql" />
+    <Build Include="Views\User\V_UserRights.sql" />
+    <Build Include="Stored Procedures\User\SP_User_Right_Insert.sql" />
+    <Build Include="Stored Procedures\User\SP_User_UserRight_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [User].[SP_User_Check]
+﻿CREATE PROCEDURE [User].[SP_User_User_Check]
 	@Username NVARCHAR(50),
 	@Password NVARCHAR(50)
 AS

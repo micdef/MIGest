@@ -31,7 +31,7 @@ namespace MIGest.Models.Global.Services
             serviceCollection.AddSingleton<DbProviderFactory, SqlClientFactory>((sp) => SqlClientFactory.Instance);
             serviceCollection.AddSingleton<IConnectionInfo, ConnectionInfo>((sp) => new ConnectionInfo(ConfigurationManager.ConnectionStrings["LocalNetwork"].ConnectionString));
             serviceCollection.AddSingleton<IConnection, Connection>();
-            serviceCollection.AddScoped<IAuthenticateService<User>, AuthenticateService>();
+            serviceCollection.AddScoped<IAuthenticateService<User, UserRight>, AuthenticateService>();
             serviceCollection.AddScoped<IUserService<User>, UserService>();
         }
 
@@ -40,9 +40,9 @@ namespace MIGest.Models.Global.Services
             get { return Container.GetService<IConnection>(); }
         }
 
-        public IAuthenticateService<User> AuthenticateService
+        public IAuthenticateService<User, UserRight> AuthenticateService
         {
-            get { return Container.GetService<IAuthenticateService<User>>(); }
+            get { return Container.GetService<IAuthenticateService<User, UserRight>>(); }
         }
 
         public IUserService<User> UserService

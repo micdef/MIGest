@@ -3036,10 +3036,19 @@ INSERT INTO [Metadata].[Zipcode] ([idcountry], [zipcode], [city]) VALUES
 (24, N'2070', N'Zwijndrecht');
 COMMIT;
 
-EXEC [User].[SP_User_Insert] @Username=N'administrator', @Password=N'Test1234=', @Firstname=N'Administrateur', @Lastname=N'Mondial Immo', @Email=N'gathonflorence@mondialimmo.be';
-EXEC [User].[SP_User_Insert] @Username=N'defraenemi', @Password=N'Test1234=', @Firstname=N'Michaël', @Lastname=N'Defraene', @Email=N'michael.defraene@outlook.be';
-EXEC [User].[SP_User_Insert] @Username=N'micde', @Password=N'Test1234=', @Firstname=N'Michaël', @Lastname=N'Defraene', @Email=N'michael.defraene@outlook.be';
+EXEC [User].[SP_User_User_Insert] @Username=N'administrator', @Password=N'Test1234=', @Firstname=N'Administrateur', @Lastname=N'Mondial Immo', @Email=N'gathonflorence@mondialimmo.be';
+EXEC [User].[SP_User_User_Insert] @Username=N'defraenemi', @Password=N'Test1234=', @Firstname=N'Michaël', @Lastname=N'Defraene', @Email=N'michael.defraene@outlook.be';
+EXEC [User].[SP_User_User_Insert] @Username=N'micde', @Password=N'Test1234=', @Firstname=N'Michaël', @Lastname=N'Defraene', @Email=N'michael.defraene@outlook.be';
 
+EXEC [User].[SP_User_Right_Insert] @Label=N'Base', @Descr=N'Programme de base';
+EXEC [User].[SP_User_Right_Insert] @Label=N'AdminPanel', @Descr=N'Panneau d''administration';
+
+EXEC [User].[SP_User_UserRight_Insert] @IdUser=1, @IdRight=1, @IsReadable=1, @IsWriteable=1;
+EXEC [User].[SP_User_UserRight_Insert] @IdUser=2, @IdRight=1, @IsReadable=1, @IsWriteable=1;
+EXEC [User].[SP_User_UserRight_Insert] @IdUser=3, @IdRight=1, @IsReadable=1, @IsWriteable=1;
+EXEC [User].[SP_User_UserRight_Insert] @IdUser=1, @IdRight=2, @IsReadable=1, @IsWriteable=1;
+EXEC [User].[SP_User_UserRight_Insert] @IdUser=2, @IdRight=2, @IsReadable=1, @IsWriteable=1;
+EXEC [User].[SP_User_UserRight_Insert] @IdUser=3, @IdRight=2, @IsReadable=1, @IsWriteable=1;
 
 /*INSERT INTO [User].[Right] ([label], [descr]) VALUES 
 (N'base', N'Programme de base'),

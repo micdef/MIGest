@@ -15,9 +15,7 @@ namespace MIGest.Models.Global.Data.User
         public string Lastname { get; set; }
         public string Email { get; set; }
         public bool IsActive { get; set; }
-        public bool IsDelete { get; set; }
         public bool IsMustChangePwd { get; set; }
-        public DateTime DateIn { get; set; }
         public string Comm { get; set; }
     }
 }
